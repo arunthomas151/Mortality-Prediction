@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Patient Registeration</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+	<script src="static/jquery.js"></script></head>
+<body>
+	{% include 'hospitalmenu.html' %}
+<form action="patient" method="POST">
+  <div class="container">
+    <h1>Patient Registeration</h1>
+    <hr>
+	
+	<br><label for="name"><b>Patient Name :</b></label>
+    <input type="text" placeholder="Enter Patient Name" name="name" id="	" required onchange="Validate()";>
+	<label style="display:none; color:red" id="name_l"></label><br><br>
+	 <script>
+	function Validate()
+	{
+	    var val = document.getElementById('name').value;
+	    if (!val.match(/^[A-Za-z][A-Za-z" "]{3,}$/))
+	    {
+		$("#name_l").html('Min. 3 and Only Alphabets Allowed..!').fadeIn().delay(3000).fadeOut();
+		document.getElementById('name').value = "";
+        	return false;
+	    }
+
+    	return true;
+	}
+	</script>
+
+	<label for="name"><b>Last Name :</b></label>
+   	<input type="text" placeholder="Enter Last Name" name="lname" id="lname" required onchange="Validatel()";>
+	<label style="display:none; color:red" id="lname_l"></label><br><br>
+	<script>
+	function Validatel()
+	{
+	    var val = document.getElementById('lname').value;
+	    if (!val.match(/^[A-Za-z][A-Za-z" "]{3,}$/))
+	    {
+		$("#lname_l").html('Min. 3 and Only Alphabets Allowed..!').fadeIn().delay(3000).fadeOut();
+		document.getElementById('lname').value = "";
+        	return false;
+	    }
+
+    	return true;
+	}
+	</script>
+
+	<label for="name"><b>Address :</b></label>
+    	<input type="text" placeholder="Enter Address" name="address" id="address" required onchange="Validatea()";>
+	<label style="display:none; color:red" id="address_l"></label><br><br>
+	<script>
+	function Validatea()
+	{
+	    var val = document.getElementById('address').value;
+	    if (!val.match(/^[A-Za-z][A-Za-z" "]{3,}$/))
+	    {
+		$("#address_l").html('Min. 3 and Only Alphabets Allowed..!').fadeIn().delay(3000).fadeOut();
+		document.getElementById('address').value = "";
+        	return false;
+	    }
+
+    	return true;
+	}
+	</script>
+
+
+    <label for="mobile"><b>Mobile :</b></label>
+    <input type="text" placeholder="Enter Mobile" name="mobile" id="mobile" required onchange="Validatep()";>
+    <label style="display:none; color:red" id="mobile_1"></label><br><br>
+	<script>
+	function Validatep()
+	{
+	    var val = document.getElementById('mobile').value;
+	    if (!val.match(/^[7-9][0-9]{9,9}$/))
+	    {
+		$("#mobile_1").html('Must. 10 and Numbers Allowed..!').fadeIn().delay(3000).fadeOut();
+		document.getElementById('mobile').value = "";
+	        return false;
+	    }
+	    return true;
+	}
+	</script>
+
+	<label for="district"><b>District :</b></label>
+	<select name="district" id="district" class="drop">
+		{% for user in dist %}
+	  	<option value="{{user[1]}}">{{user[1]}}</option>
+		{% endfor %}
+	</select><br><br>
+
+    <label for="city"><b>City :</b></label>
+    <input type="text" placeholder="Enter city" name="city" id="city" required onchange="Validatec()";>
+    <label style="display:none; color:red" id="city_1"></label><br><br>
+	 <script>
+	function Validatec()
+	{
+	    var val = document.getElementById('city').value;
+	    if (!val.match(/^[A-Za-z][A-Za-z" "]{3,}$/))
+	    {
+	        $("#city_1").html('Min. 3 and Only Alphabets Allowed..!').fadeIn().delay(3000).fadeOut();		            				document.getElementById('city').value = "";
+        	return false;
+	    }
+
+    	return true;
+	}
+	</script>
+
+    <label for="text"><b>Age :</b></label>
+    <input type="text" placeholder="Enter Age" name="age" id="age" required onchange="Validateag()";>
+    <label style="display:none; color:red" id="age_1"></label><br><br>
+	<script>
+	function Validateag()
+	{
+	    var val = document.getElementById('age').value;
+	    if (!val.match(/^[0-9][0-9]{1,1}$/))
+	    {
+		$("#age_1").html('Must. 2 and Numbers Allowed..!').fadeIn().delay(3000).fadeOut();
+		document.getElementById('age').value = "";
+	        return false;
+	    }
+	    return true;
+	}
+	</script>
+
+    <label for="radio" class="radio"><b>Sex :</b></label>
+    <input type="radio" name="sex" id="male" required value="Male"><span>Male</span>
+	<input type="radio" name="sex" id="female" required value="Female"><span>Female</span><br><br><br>
+	
+    <label for="pin"><b>Pincode :</b></label>
+    <input type="text" placeholder="Enter pincode" name="pin" id="pin" required onchange="Validatepin()";>
+    <label style="display:none; color:red" id="pin_1"></label><br><br>
+	<script>
+	function Validatepin()
+	{
+	    var val = document.getElementById('pin').value;
+	    if (!val.match(/^[0-9][0-9]{5,5}$/))
+	    {
+	        $("#pin_1").html('Must. 6 and Numbers Allowed..!').fadeIn().delay(3000).fadeOut();
+		document.getElementById('pin').value = "";
+	        return false;
+	    }
+	    return true;
+	}
+	</script>
+
+    <label for="dicease"><b>Dicease :</b></label>
+    <input type="text" placeholder="Enter dicease" name="dicease" id="dicease" required onchange="Validated()";>
+    <label style="display:none; color:red" id="dicease_1"></label><br><br>
+	 <script>
+	function Validated()
+	{
+	    var val = document.getElementById('dicease').value;
+	    if (!val.match(/^[A-Za-z][A-Za-z" "]{3,}$/))
+	    {
+	        $("#dicease_1").html('Min. 3 and Only Alphabets Allowed..!').fadeIn().delay(3000).fadeOut();		            				document.getElementById('dicease').value = "";
+        	return false;
+	    }
+
+    	return true;
+	}
+	</script>
+
+
+    <button type="submit" name="submit" value="submit">Register</button>
+  </div>
+</form>
+
+</body>
+</html>

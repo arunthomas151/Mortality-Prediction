@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Hospitals Details</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+        <script src="static/jquery.js"></script>
+</head>
+<body>
+        {% include 'adminmenu.html' %}
+        <div class="container1">
+        {% if hsptl[0] == Null: %}
+                <h1>Empty List</h1>
+        {% else: %}
+        <form action="{{ url_for('delete') }}" method="POST">
+        <h1>HOSPITAL DETAILS</h1>
+        <table>
+        <tr>
+                <th>Hospital Name</th>
+                <th>Contact Number</th>
+                <th>Email</th>
+                <th>District</th>
+                <th>City</th>
+                <th>Remove</th>
+        </tr>
+        {% for user in hsptl %}
+        <tr>
+        <td style="display:none;">
+        <input type="text" style="display:none;" id="hid" name="hid" value={{user[0]}}></td>
+        <td>{{user[2]}}</td>
+        <td>{{user[3]}}</td>
+        <td>{{user[5]}}</td>
+        <td>{{user[6]}}</td>
+        <td>{{user[7]}}</td>
+        <td><button id="hid1" name="hid1" value={{user[0]}}>Delete</button></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </table>
+        </form>
+        </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Patient Details</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+	<script src="static/jquery.js"></script>
+</head>
+<body>
+        {% include 'hospitalmenu.html' %}
+        <div class="container1">
+        {% if pati[0] == Null: %}
+                <h1>Empty List</h1>
+        {% else: %}
+         <h1>Patient Details</h1>
+         <table>
+                 <tr>
+                        <th>Patient Name</th>
+                        <th>Last Name</th>
+                        <th>Contact Number</th>
+                        <th>District</th>
+                        <th>City</th>
+                        <th>Sex</th>
+                        <th>Disease</th>
+                 </tr>
+                {% for user in pati %}
+                <tr>
+                        <td>{{user[2]}}</td>
+                        <td>{{user[3]}}</td>
+                        <td>{{user[5]}}</td>
+                        <td>{{user[6]}}</td>
+                        <td>{{user[7]}}</td>
+                        <td>{{user[9]}}</td>
+                        <td>{{user[11]}}</td>
+                </tr>
+        {% endfor %}
+        {% endif %}
+        </table>
+</body>
+</html>
